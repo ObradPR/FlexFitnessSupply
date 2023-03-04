@@ -27,8 +27,8 @@ if (url === "/FlexFitnessSupply/" || url === "/FlexFitnessSupply/index.html") {
     `#best__products_container`
   );
 
-  $(document).ready(function () {
-    // INDEX PROMOTION SLDIER
+  setTimeout(() => {
+    
     $(`#slider__promotion`).skdslider({
       slideSelector: `.slide__promotion`,
       delay: 4000,
@@ -38,7 +38,9 @@ if (url === "/FlexFitnessSupply/" || url === "/FlexFitnessSupply/index.html") {
       autoSlide: true,
       animationType: `sliding`,
     });
-  });
+  }, 2000);
+    // INDEX PROMOTION SLDIER
+
 
   // INDEX AJAX CALLS
   ajaxCall("products", ispisNajprodavanijihProizvoda);
