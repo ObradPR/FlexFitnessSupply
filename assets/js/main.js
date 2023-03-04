@@ -94,10 +94,9 @@ if (url === "/FlexFitnessSupply/" || url === "/FlexFitnessSupply/index.html") {
   searchTb.addEventListener(`keyup`, filterChange);
 
   // ADD PRODUCT TO LOCAL STORAGE EVENT
+  let data = JSON.parse(localStorage.getItem("zaKupovinu"));
   let timer2 = setInterval(() => {
     if ($(`.add__to_cart`) != undefined) {
-      let data;
-      data = JSON.parse(localStorage.getItem("zaKupovinu"));
       if (data == null) {
         data = [];
       }
