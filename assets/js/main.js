@@ -1,49 +1,596 @@
-"use strict";const url=window.location.pathname;let proizvodi=[];const collapseMenuButton=document.querySelector("#toggle"),navMeni=document.querySelector("#nav__menu"),cartBtn=document.querySelector("#cart"),logo=document.querySelector("#logo");let data=JSON.parse(localStorage.getItem("zaKupovinu"));if(ajaxCall("navMeni",ispisNavMeni),collapseMenuButton.addEventListener("click",function(){$(navMeni).slideToggle()}),"/FlexFitnessSupply/"===url||"/FlexFitnessSupply/index.html"===url){let e=document.querySelector("#slider__promotion_container"),t=document.querySelector("#best__products_container"),n=setInterval(()=>{void 0!=$(".slide__promotion")&&void 0!=$(".add__to_cart")&&($("#slider__promotion").skdslider({slideSelector:".slide__promotion",delay:4e3,animationSpeed:1e3,showNextPrev:!1,showPlayButton:!1,autoSlide:!0,animationType:"sliding"}),dugmeZaDodavanjeFProizvodima(),clearInterval(n))},100);function a(e){let n="";for(let a of(proizvodi=e,e))a.najprodavaniji&&(n+=ispisProizvodBloka(a));t.innerHTML=n}function r(t){let n="";for(let a of t)n+=`<li class="slide__promotion"><img src="${a.slika.src}" alt="${a.slika.alt}" /></li>`;e.innerHTML=n}ajaxCall("products",a),ajaxCall("promotion__products",r)}else if("/FlexFitnessSupply/shop.html"===url){let i=document.querySelector("#sidebar__brands"),l=document.querySelector("#sidebar__categories"),o=document.querySelector("#all__products"),s=document.querySelector("#sortDdl"),c=document.querySelector("#searchTb");ajaxCall("brand",p),ajaxCall("category",v),ajaxCall("products",f),s.addEventListener("change",function(){b()}),document.querySelectorAll(".stanje").forEach(function(e){e.addEventListener("change",b)}),document.querySelectorAll(".kolekcija").forEach(function(e){e.addEventListener("change",b)}),c.addEventListener("keyup",b);let u=setInterval(()=>{void 0!=$(".add__to_cart")&&(dugmeZaDodavanjeFProizvodima(),clearInterval(u))},100);function d(e,t){let n="",a=1;for(let r of e)n+=`<div class="sidebar__row">
-      <label for="${r.naziv}">${r.naziv}</label>
-      <input type="checkbox" name="${r.naziv}" id="${r.naziv}" class="${t}" value="${a++}"/>
-    </div>`;return n}function p(e){i.innerHTML=d(e,"brands"),document.querySelectorAll(".brands").forEach(e=>{e.addEventListener("change",b)})}function v(e){l.innerHTML=d(e,"categories"),document.querySelectorAll(".categories").forEach(e=>{e.addEventListener("change",b)})}function f(e){proizvodi=e;let t="";if(0===(e=y(e=k(e=h(e=g(e=m(e=S(e))))))).length)t+="<p>Nemamo proizvode za izabrane kategorije</p>";else for(let n of e)t+=ispisProizvodBloka(n);o.innerHTML=t}function y(e){let t=s.value;if("asc__name"===t)return e.sort((e,t)=>e.naziv>t.naziv?1:-1);if("desc__name"===t)return e.sort((e,t)=>e.naziv<t.naziv?1:-1);if("asc__price"===t)return e.sort((e,t)=>+e.cena.aktuelnaCena>+t.cena.aktuelnaCena?1:-1);if("asc__price"===t)return e.sort((e,t)=>+e.cena.aktuelnaCena>+t.cena.aktuelnaCena?1:-1);if("desc__price"===t)return e.sort((e,t)=>+e.cena.aktuelnaCena<+t.cena.aktuelnaCena?1:-1);else if("sort__star"===t)return e.sort((e,t)=>e.ocena.stars<t.ocena.stars?1:-1);else if("sort__comments"===t)return e.sort((e,t)=>e.ocena.komentari<t.ocena.komentari?1:-1);return e}function m(e){let t=[];return(document.querySelectorAll(".categories:checked").forEach(function(e){t.push(parseInt(e.value))}),0!=t.length)?e.filter(e=>e.kategorije.some(e=>t.includes(e))):e}function S(e){let t=[];return(document.querySelectorAll(".brands:checked").forEach(function(e){t.push(parseInt(e.value))}),0!=t.length)?e.filter(e=>t.includes(e.brend)):e}function g(e){let t=[];return(document.querySelectorAll(".stanje:checked").forEach(function(e){let n=e.getAttribute("id");"stanje__ima"===n&&t.push(!0),"stanje__nema"===n&&t.push(!1)}),0!=t.length)?e.filter(e=>t.includes(e.dostupnost)):e}function h(e){let t,n=[],a=[],r=[];return(document.querySelectorAll(".kolekcija").forEach(function(t){t.checked&&"novo"===t.id&&(n=e.filter(e=>!0===e.novo)),t.checked&&"akcija"===t.id&&(a=e.filter(e=>e.cena.staraCena)),t.checked&&"najprodavaniji"===t.id&&(r=e.filter(e=>!0===e.najprodavaniji))}),0!=(t=[...n,...a,...r]).length)?t:e}function k(e){let t=c.value;return e.filter(function(e){if(-1!=e.naziv.toUpperCase().indexOf(t.trim().toUpperCase()))return e})}function b(){ajaxCall("products",f)}}else if("/FlexFitnessSupply/contact.html"===url){let q=document.querySelector("#polje__tekst"),j=document.querySelector("#ddl__opcije"),L=document.querySelector("#form__subimt_btn"),z=document.querySelector("#broj__karaktera"),E=document.querySelector(".form_row__txtarea"),x=document.querySelector("#error__ime"),M=document.querySelector("#error__prezime"),_=document.querySelector("#error__telefon"),C=document.querySelector("#error__mejl"),T=document.querySelector("#error__poruka");function H(){let e=document.querySelector("#ime"),t=document.querySelector("#prezime"),n=document.querySelector("#telefon"),a=document.querySelector("#mejl"),r;A(e,t,n,a,document.querySelector("#polje__tekst"),document.querySelector("#ddl__opcije"))}function A(e,t,n,a,r,i){let l=/^[A-ZŽĆČŠĐ][a-zžćčšđ]+$/,o=!1;e.value.match(l)?x.style.display="none":(x.style.display="block",o=!0),t.value.match(l)?M.style.display="none":(M.style.display="block",o=!0),n.value.match(/^[\+]381\s6[0-9]{8}$/)?_.style.display="none":(_.style.display="block",o=!0),a.value.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)?C.style.display="none":(C.style.display="block",o=!0),r.value.length>=50?(T.style.display="none",E.style.justifyContent="flex-end"):(E.style.justifyContent="space-between",T.style.display="block",o=!0),0!=i.value?j.style.border="1px solid #707070":(j.style.border="1px solid #fc7c78",o=!0),o||(e.value="",t.value="",n.value="",a.value="",r.value="",j.value="0",z.innerHTML=0)}q.addEventListener("keyup",function(){let e=q.value.length;z.innerHTML=e}),L.addEventListener("click",function(e){e.preventDefault(),H()})}else if("/FlexFitnessSupply/cart.html"===url){let F,w=document.querySelector("#cart__products");function D(){F=JSON.parse(localStorage.getItem("zaKupovinu"))}function P(){D(),0==F.length&&(document.querySelector("#cart__empty").style.display="block",document.querySelector(".money").innerHTML=0)}function U(e){let t="",n,a=0,r=[...new Map(e.map(e=>[e.id,e])).values(),];for(let i of r)n=e.filter(e=>e.id==i.id).length,t+=`<div class="cart__product_container">
+"use strict";
+
+// GLOBAL DATA
+const url = window.location.pathname;
+let proizvodi = [];
+const collapseMenuButton = document.querySelector(`#toggle`);
+const navMeni = document.querySelector(`#nav__menu`);
+const cartBtn = document.querySelector(`#cart`);
+const logo = document.querySelector(`#logo`);
+let data = JSON.parse(localStorage.getItem("zaKupovinu"));
+
+// GLOBAL AJAX CALLS
+ajaxCall("navMeni", ispisNavMeni);
+
+// GLOBAL EVENTS
+collapseMenuButton.addEventListener(`click`, function () {
+  $(navMeni).slideToggle();
+});
+
+// PAGE
+
+if (url === "/FlexFitnessSupply/" || url === "/FlexFitnessSupply/index.html") {
+  //  INDEX DATA
+  const sliderContainer = document.querySelector(
+    `#slider__promotion_container`
+  );
+  const bestProductsContainer = document.querySelector(
+    `#best__products_container`
+  );
+  let timer = setInterval(() => {
+    if (
+      $(`.slide__promotion`) != undefined &&
+      $(`.add__to_cart`) != undefined
+    ) {
+      $(`#slider__promotion`).skdslider({
+        slideSelector: `.slide__promotion`,
+        delay: 4000,
+        animationSpeed: 1000,
+        showNextPrev: false,
+        showPlayButton: false,
+        autoSlide: true,
+        animationType: `sliding`,
+      });
+      dugmeZaDodavanjeFProizvodima();
+      clearInterval(timer);
+    }
+  }, 100);
+
+  // INDEX AJAX CALLS
+  ajaxCall("products", ispisNajprodavanijihProizvoda);
+  ajaxCall("promotion__products", ispisPromocija);
+
+  // INDEX FUNCTIONS
+  function ispisNajprodavanijihProizvoda(data) {
+    let sadrzaj = "";
+    proizvodi = data;
+
+    for (let obj of data) {
+      if (obj.najprodavaniji) {
+        sadrzaj += ispisProizvodBloka(obj);
+      }
+    }
+
+    bestProductsContainer.innerHTML = sadrzaj;
+  }
+  function ispisPromocija(data) {
+    let sadrzaj = "";
+
+    for (let obj of data) {
+      sadrzaj += `<li class="slide__promotion"><img src="${obj.slika.src}" alt="${obj.slika.alt}" /></li>`;
+    }
+
+    sliderContainer.innerHTML = sadrzaj;
+  }
+} else if (url === "/FlexFitnessSupply/shop.html") {
+  // SHOP DATA
+  const sidebarBrendContainer = document.querySelector(`#sidebar__brands`);
+  const sidebarCategoryContainer =
+    document.querySelector(`#sidebar__categories`);
+  const productsContainer = document.querySelector(`#all__products`);
+  const sortDdl = document.querySelector(`#sortDdl`);
+  const searchTb = document.querySelector(`#searchTb`);
+
+  // SHOP AJAX CALLS
+  ajaxCall("brand", ispisBrendova);
+  ajaxCall("category", ispisKategorije);
+  ajaxCall("products", ispisProizvoda);
+
+  // SHOP EVENTS
+  sortDdl.addEventListener(`change`, function () {
+    filterChange();
+  });
+  document.querySelectorAll(`.stanje`).forEach(function (cb) {
+    cb.addEventListener(`change`, filterChange);
+  });
+  document.querySelectorAll(`.kolekcija`).forEach(function (cb) {
+    cb.addEventListener(`change`, filterChange);
+  });
+  searchTb.addEventListener(`keyup`, filterChange);
+
+  // ADD PRODUCT TO LOCAL STORAGE EVENT
+
+  let timer2 = setInterval(() => {
+    if ($(`.add__to_cart`) != undefined) {
+      dugmeZaDodavanjeFProizvodima();
+      clearInterval(timer2);
+    }
+  }, 100);
+
+  // SHOP FUNCTIONS
+
+  function ispisSidebarTeksta(data, classs) {
+    let sadrzaj = "";
+    let value = 1;
+    for (let obj of data) {
+      sadrzaj += `<div class="sidebar__row">
+      <label for="${obj.naziv}">${obj.naziv}</label>
+      <input type="checkbox" name="${obj.naziv}" id="${
+        obj.naziv
+      }" class="${classs}" value="${value++}"/>
+    </div>`;
+    }
+
+    return sadrzaj;
+  }
+  function ispisBrendova(data) {
+    sidebarBrendContainer.innerHTML = ispisSidebarTeksta(data, "brands");
+    document.querySelectorAll(`.brands`).forEach((x) => {
+      x.addEventListener(`change`, filterChange);
+    });
+  }
+  function ispisKategorije(data) {
+    sidebarCategoryContainer.innerHTML = ispisSidebarTeksta(data, "categories");
+    document.querySelectorAll(`.categories`).forEach((x) => {
+      x.addEventListener(`change`, filterChange);
+    });
+  }
+  function ispisProizvoda(data) {
+    proizvodi = data;
+    data = filterBrands(data);
+    data = filterCategory(data);
+    data = filterDostupnosti(data);
+    data = filterKolekcija(data);
+    data = filterPretraga(data);
+    data = sorting(data);
+
+    let sadrzaj = "";
+    if (data.length === 0) {
+      sadrzaj += `<p>Nemamo proizvode za izabrane kategorije</p>`;
+    } else {
+      for (let obj of data) {
+        sadrzaj += ispisProizvodBloka(obj);
+      }
+    }
+    productsContainer.innerHTML = sadrzaj;
+  }
+  function sorting(data) {
+    let sortingType = sortDdl.value;
+    if (sortingType === `asc__name`) {
+      return data.sort((a, b) => (a.naziv > b.naziv ? 1 : -1));
+    } else if (sortingType === `desc__name`) {
+      return data.sort((a, b) => (a.naziv < b.naziv ? 1 : -1));
+    } else if (sortingType === `asc__price`) {
+      return data.sort((a, b) =>
+        +a.cena.aktuelnaCena > +b.cena.aktuelnaCena ? 1 : -1
+      );
+    } else if (sortingType === `asc__price`) {
+      return data.sort((a, b) =>
+        +a.cena.aktuelnaCena > +b.cena.aktuelnaCena ? 1 : -1
+      );
+    } else if (sortingType === `desc__price`) {
+      return data.sort((a, b) =>
+        +a.cena.aktuelnaCena < +b.cena.aktuelnaCena ? 1 : -1
+      );
+    } else if (sortingType === `sort__star`) {
+      return data.sort((a, b) => (a.ocena.stars < b.ocena.stars ? 1 : -1));
+    } else if (sortingType === `sort__comments`) {
+      return data.sort((a, b) =>
+        a.ocena.komentari < b.ocena.komentari ? 1 : -1
+      );
+    }
+    return data;
+  }
+  function filterCategory(data) {
+    let selectedCategories = [];
+    document.querySelectorAll(`.categories:checked`).forEach(function (el) {
+      selectedCategories.push(parseInt(el.value));
+    });
+    if (selectedCategories.length != 0) {
+      return data.filter((x) =>
+        x.kategorije.some((k) => selectedCategories.includes(k))
+      );
+    }
+    return data;
+  }
+  function filterBrands(data) {
+    let selectedBrands = [];
+    document.querySelectorAll(`.brands:checked`).forEach(function (el) {
+      selectedBrands.push(parseInt(el.value));
+    });
+    if (selectedBrands.length != 0) {
+      return data.filter((x) => selectedBrands.includes(x.brend));
+    }
+    return data;
+  }
+  function filterDostupnosti(data) {
+    let selectedDostupnost = [];
+    document.querySelectorAll(`.stanje:checked`).forEach(function (el) {
+      let id = el.getAttribute(`id`);
+      if (id === `stanje__ima`) selectedDostupnost.push(true);
+      if (id === `stanje__nema`) selectedDostupnost.push(false);
+    });
+    if (selectedDostupnost.length != 0) {
+      return data.filter((x) => selectedDostupnost.includes(x.dostupnost));
+    }
+    return data;
+  }
+  function filterKolekcija(data) {
+    let proizvodi;
+    let novi = [];
+    let akcijski = [];
+    let najprodavaniji = [];
+    document.querySelectorAll(`.kolekcija`).forEach(function (cb) {
+      if (cb.checked && cb.id === `novo`) {
+        novi = data.filter((x) => x.novo === true);
+      }
+      if (cb.checked && cb.id === `akcija`) {
+        akcijski = data.filter((x) => x.cena.staraCena);
+      }
+      if (cb.checked && cb.id === `najprodavaniji`) {
+        najprodavaniji = data.filter((x) => x.najprodavaniji === true);
+      }
+    });
+    proizvodi = [...novi, ...akcijski, ...najprodavaniji];
+    if (proizvodi.length != 0) {
+      return proizvodi;
+    }
+    return data;
+  }
+  function filterPretraga(data) {
+    const unos = searchTb.value;
+
+    let filtriranNiz = data.filter(function (el) {
+      if (el.naziv.toUpperCase().indexOf(unos.trim().toUpperCase()) != -1) {
+        return el;
+      }
+    });
+
+    return filtriranNiz;
+  }
+  function filterChange() {
+    ajaxCall("products", ispisProizvoda);
+  }
+} else if (url === "/FlexFitnessSupply/contact.html") {
+  // CONTACT DATA
+  const poruka = document.querySelector(`#polje__tekst`);
+  const ddlOpcije = document.querySelector(`#ddl__opcije`);
+  const formBtnSubmit = document.querySelector(`#form__subimt_btn`);
+  const brKaraktera = document.querySelector(`#broj__karaktera`);
+  const txtAreaRow = document.querySelector(`.form_row__txtarea`);
+
+  const errorIme = document.querySelector(`#error__ime`);
+  const errorPrezime = document.querySelector(`#error__prezime`);
+  const errorTelefon = document.querySelector(`#error__telefon`);
+  const errorMejl = document.querySelector(`#error__mejl`);
+  const errorPoruka = document.querySelector(`#error__poruka`);
+
+  // CONTACT EVENTS
+  poruka.addEventListener(`keyup`, function () {
+    let broj = poruka.value.length;
+    brKaraktera.innerHTML = broj;
+  });
+
+  formBtnSubmit.addEventListener(`click`, function (e) {
+    e.preventDefault();
+    podaciIzForme();
+  });
+
+  // CONTACT FUNCTIONS
+  function podaciIzForme() {
+    let ime = document.querySelector(`#ime`);
+    let prezime = document.querySelector(`#prezime`);
+    let telefon = document.querySelector(`#telefon`);
+    let mejl = document.querySelector(`#mejl`);
+    let poruka = document.querySelector(`#polje__tekst`);
+    let opcija = document.querySelector(`#ddl__opcije`);
+
+    proveraPodataka(ime, prezime, telefon, mejl, poruka, opcija);
+  }
+
+  function proveraPodataka(ime, prezime, telefon, mejl, poruka, opcija) {
+    const imePrezimeRegEx = /^[A-ZŽĆČŠĐ][a-zžćčšđ]+$/;
+    const mejlRegEx = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    const telefonRegEx = /^[\+]381\s6[0-9]{8}$/;
+
+    let greske = false;
+    if (ime.value.match(imePrezimeRegEx)) {
+      errorIme.style.display = `none`;
+    } else {
+      errorIme.style.display = `block`;
+      greske = true;
+    }
+    if (prezime.value.match(imePrezimeRegEx)) {
+      errorPrezime.style.display = `none`;
+    } else {
+      errorPrezime.style.display = `block`;
+      greske = true;
+    }
+    if (telefon.value.match(telefonRegEx)) {
+      errorTelefon.style.display = `none`;
+    } else {
+      errorTelefon.style.display = `block`;
+      greske = true;
+    }
+    if (mejl.value.match(mejlRegEx)) {
+      errorMejl.style.display = `none`;
+    } else {
+      errorMejl.style.display = `block`;
+      greske = true;
+    }
+    if (poruka.value.length >= 50) {
+      errorPoruka.style.display = `none`;
+      txtAreaRow.style.justifyContent = `flex-end`;
+    } else {
+      txtAreaRow.style.justifyContent = `space-between`;
+      errorPoruka.style.display = `block`;
+      greske = true;
+    }
+    if (opcija.value != 0) {
+      ddlOpcije.style.border = `1px solid #707070`;
+    } else {
+      ddlOpcije.style.border = `1px solid #fc7c78`;
+      greske = true;
+    }
+
+    if (!greske) {
+      ime.value = ``;
+      prezime.value = ``;
+      telefon.value = ``;
+      mejl.value = ``;
+      poruka.value = ``;
+      ddlOpcije.value = "0";
+      brKaraktera.innerHTML = 0;
+    }
+  }
+} else if (url === "/FlexFitnessSupply/cart.html") {
+  // CART DATA
+  let proizvodiUKorpi;
+  const cartProductsContainer = document.querySelector(`#cart__products`);
+
+  // CART EVENTS
+  postavaljanjeStanjaKorpe();
+  ispisProizvodaIzLocalStorage(proizvodiUKorpi);
+
+  document.querySelectorAll(`.plus`).forEach(function (btn) {
+    btn.addEventListener(`click`, function () {
+      let id = prodnadjiProizvod(this);
+
+      proizvodiUKorpi.push(proizvodiUKorpi.find((x) => x.id == id));
+      dodajULocalStorage(proizvodiUKorpi);
+
+      statickaPromena(this, "previousSibling", id);
+    });
+  });
+  document.querySelectorAll(`.minus`).forEach(function (btn) {
+    btn.addEventListener(`click`, function () {
+      let id = prodnadjiProizvod(this);
+
+      let el = proizvodiUKorpi.find((x) => x.id == id);
+      let index;
+      for (let i in proizvodiUKorpi) {
+        if (el == proizvodiUKorpi[i]) {
+          index = i;
+        }
+      }
+
+      statickaPromena(this, "nextSibling", id);
+      if (index != undefined) proizvodiUKorpi.splice(index, 1);
+      dodajULocalStorage(proizvodiUKorpi);
+      postavaljanjeStanjaKorpe();
+    });
+  });
+
+  document.querySelectorAll(`#cart__btns a`).forEach((btn) => {
+    btn.addEventListener(`click`, function (e) {
+      e.preventDefault();
+
+      if (this.id == `del__all`) {
+        arzurirajBrisanjeKupovina();
+      }
+
+      if (this.id == `buy__all`) {
+        if (proizvodiUKorpi.length != 0) {
+          arzurirajBrisanjeKupovina();
+
+          setTimeout(() => {
+            document.querySelector(`#success__mess`).style.display = `none`;
+          }, 3000);
+          document.querySelector(`#success__mess`).style.display = `block`;
+        }
+      }
+    });
+  });
+
+  // CART FUNCTIONS
+  function uzimanjeVrednostiIzLocalStorage() {
+    proizvodiUKorpi = JSON.parse(localStorage.getItem("zaKupovinu"));
+  }
+  function postavaljanjeStanjaKorpe() {
+    uzimanjeVrednostiIzLocalStorage();
+    if (proizvodiUKorpi.length == 0) {
+      document.querySelector(`#cart__empty`).style.display = `block`;
+      document.querySelector(`.money`).innerHTML = 0;
+    }
+  }
+  function ispisProizvodaIzLocalStorage(data) {
+    let ispis = "";
+    let qnt;
+    let key = "id";
+    let ukpnaCena = 0;
+
+    const arrayUniqueByKey = [
+      ...new Map(data.map((item) => [item[key], item])).values(),
+    ];
+
+    for (let obj of arrayUniqueByKey) {
+      qnt = data.filter((x) => x.id == obj.id).length;
+      ispis += `<div class="cart__product_container">
       <div class="cart__product">
         <div class="cart__product_img">
-          <img src="${i.slika.src}" alt="${i.slika.alt}" />
+          <img src="${obj.slika.src}" alt="${obj.slika.alt}" />
         </div>
         <div class="cart__product_info">
           <h2>Naziv proizvoda</h2>
-          <p>${i.naziv}</p>
+          <p>${obj.naziv}</p>
         </div>
         <div class="cart__product_funn">
-          <h3>Cena proizvoda: ${i.cena.aktuelnaCena} din.</h3>
+          <h3>Cena proizvoda: ${obj.cena.aktuelnaCena} din.</h3>
           <div class="cart__product_funn-row">
             <p>Kolicina:</p>
             <button class="minus"><b>-</b></button>
-            <span class="kol">${n}</span>
+            <span class="kol">${qnt}</span>
             <button class="plus"><b>+</b></button>
           </div>
-          <p>Ukupna cena: <span class="cena__el">${i.cena.aktuelnaCena*n}</span> din.</p>
+          <p>Ukupna cena: <span class="cena__el">${
+            obj.cena.aktuelnaCena * qnt
+          }</span> din.</p>
         </div>
       </div>
-      <a href="#" class="del" id="${i.id}">Obrisi</a>
-    </div>`,a+=+i.cena.aktuelnaCena*n;w.innerHTML=t,document.querySelector(".money").innerHTML=a}function B(e){return e.parentElement.parentElement.parentElement.nextSibling.nextSibling.id}function K(e,t,n){let a=document.querySelector(".money"),r,i,l;"previousSibling"==t&&(r=e.previousSibling.previousSibling),"nextSibling"==t&&((r=e.nextSibling.nextSibling).innerHTML=+r.innerHTML-1),l=F.find(e=>e.id==n).cena.aktuelnaCena,0==+r.innerHTML?(e.parentElement.parentElement.parentElement.parentElement.style.display="none",a.innerHTML=+a.innerHTML-+l):(i=e.parentElement.nextSibling.nextSibling.firstElementChild,"nextSibling"==t?(i.innerHTML=+i.innerHTML-+l,a.innerHTML=+a.innerHTML-+l):(r.innerHTML=+r.innerHTML+1,i.innerHTML=+i.innerHTML+ +l,a.innerHTML=+a.innerHTML+ +l))}function Z(){localStorage.removeItem("zaKupovinu")}function N(){Z(),dodajULocalStorage(F=[]),U(F),P()}P(),U(F),document.querySelectorAll(".plus").forEach(function(e){e.addEventListener("click",function(){let e=B(this);F.push(F.find(t=>t.id==e)),dodajULocalStorage(F),K(this,"previousSibling",e)})}),document.querySelectorAll(".minus").forEach(function(e){e.addEventListener("click",function(){let e=B(this),t=F.find(t=>t.id==e),n;for(let a in F)t==F[a]&&(n=a);K(this,"nextSibling",e),void 0!=n&&F.splice(n,1),dodajULocalStorage(F),P()})}),document.querySelectorAll("#cart__btns a").forEach(e=>{e.addEventListener("click",function(e){e.preventDefault(),"del__all"==this.id&&N(),"buy__all"==this.id&&0!=F.length&&(N(),setTimeout(()=>{document.querySelector("#success__mess").style.display="none"},3e3),document.querySelector("#success__mess").style.display="block")})})}function ispisProizvodBloka(e,t){return t=`<div class="product__block">
-  ${e.najprodavaniji?"<div class='bestseller'><img src='assets/img/bestseller.png' alt='bestseller mark' /></div>":""}
-  ${e.cena.staraCena?"<div class='salemark'><img src='assets/img/salemark__15.png' alt='salemark 15%'/></div>":""}
-  ${e.dostupnost?"":"<div class='rasprodato'><img src='assets/img/rasprodato.png' alt='rasprodato mark'/></div>"}
+      <a href="#" class="del" id="${obj.id}">Obrisi</a>
+    </div>`;
+      ukpnaCena += +obj.cena.aktuelnaCena * qnt;
+    }
+
+    cartProductsContainer.innerHTML = ispis;
+    document.querySelector(`.money`).innerHTML = ukpnaCena;
+  }
+  function prodnadjiProizvod(el) {
+    let id =
+      el.parentElement.parentElement.parentElement.nextSibling.nextSibling.id;
+    return id;
+  }
+  function statickaPromena(el, sibling, id) {
+    let ukupnaCena = document.querySelector(`.money`);
+    let col;
+    let cena;
+    let cenaProizvoda;
+    if (sibling == `previousSibling`) {
+      col = el.previousSibling.previousSibling;
+    }
+    if (sibling == `nextSibling`) {
+      col = el.nextSibling.nextSibling;
+      col.innerHTML = +col.innerHTML - 1;
+    }
+    cenaProizvoda = proizvodiUKorpi.find((x) => x.id == id).cena.aktuelnaCena;
+    if (+col.innerHTML == 0) {
+      el.parentElement.parentElement.parentElement.parentElement.style.display = `none`;
+      ukupnaCena.innerHTML = +ukupnaCena.innerHTML - +cenaProizvoda;
+    } else {
+      cena = el.parentElement.nextSibling.nextSibling.firstElementChild;
+      if (sibling == `nextSibling`) {
+        cena.innerHTML = +cena.innerHTML - +cenaProizvoda;
+        ukupnaCena.innerHTML = +ukupnaCena.innerHTML - +cenaProizvoda;
+      } else {
+        col.innerHTML = +col.innerHTML + 1;
+        cena.innerHTML = +cena.innerHTML + +cenaProizvoda;
+        ukupnaCena.innerHTML = +ukupnaCena.innerHTML + +cenaProizvoda;
+      }
+    }
+  }
+  function isprazniLocalStorage() {
+    localStorage.removeItem(`zaKupovinu`);
+  }
+  function arzurirajBrisanjeKupovina() {
+    isprazniLocalStorage();
+    proizvodiUKorpi = [];
+    dodajULocalStorage(proizvodiUKorpi);
+    ispisProizvodaIzLocalStorage(proizvodiUKorpi);
+    postavaljanjeStanjaKorpe();
+  }
+}
+
+// GLOBAL FUNCTIONS
+function ispisProizvodBloka(obj, txtVar) {
+  txtVar = `<div class="product__block">
+  ${
+    obj.najprodavaniji
+      ? "<div class='bestseller'><img src='assets/img/bestseller.png' alt='bestseller mark' /></div>"
+      : ""
+  }
+  ${
+    obj.cena.staraCena
+      ? "<div class='salemark'><img src='assets/img/salemark__15.png' alt='salemark 15%'/></div>"
+      : ""
+  }
+  ${
+    obj.dostupnost
+      ? ""
+      : "<div class='rasprodato'><img src='assets/img/rasprodato.png' alt='rasprodato mark'/></div>"
+  }
   <img
-    src="${e.slika.src}"
-    alt="${e.slika.alt}"
+    src="${obj.slika.src}"
+    alt="${obj.slika.alt}"
   />
-  <h3>${e.naziv}</h3>
+  <h3>${obj.naziv}</h3>
   <div class="prodcut__stats">
     <p>
-      <span class="product__stars">(${e.ocena.stars})</span
-      >${ispisiZvezdice(e.ocena.stars)}
+      <span class="product__stars">(${obj.ocena.stars})</span
+      >${ispisiZvezdice(obj.ocena.stars)}
     </p>
-    <p><span class="product__coments">(${e.ocena.komentari})</span> Komentara</p>
+    <p><span class="product__coments">(${
+      obj.ocena.komentari
+    })</span> Komentara</p>
   </div>
   <div id="product__info">
     <div id="price">
-    <p>${e.cena.aktuelnaCena} RSD</p>
-    <del>${e.cena.staraCena?e.cena.staraCena+" RSD":""}</del>
+    <p>${obj.cena.aktuelnaCena} RSD</p>
+    <del>${obj.cena.staraCena ? obj.cena.staraCena + " RSD" : ""}</del>
     </div>
     <div class="add__to_cart"><i class="fa-solid fa-bag-shopping"></i></div>
-    <input type="hidden" value="${e.id}"/>
+    <input type="hidden" value="${obj.id}"/>
   </div>
-</div>`}function ispisiZvezdice(e){let t="";e=Math.trunc(e);for(let n=0;n<e;n++)t+="<i class='fa-regular fa-star'></i>";return t}function ajaxCall(e,t){$.ajax({url:`assets/json/${e}.json`,type:"get",dataType:"json",success(e){t(e)},error(e){console.log(e)}})}function ispisNavMeni(e){let t="";for(let n of e)t+=`<li><a href="${n.href}">${n.naziv}</a></li>`;$("#nav__menu").html(t)}function dugmeZaDodavanjeFProizvodima(){null==data&&(data=[]),document.querySelectorAll(".add__to_cart").forEach(e=>{e.addEventListener("click",function(){setTimeout(()=>{document.querySelector("#success__cart").style.display="none"},900),document.querySelector("#success__cart").style.display="block";let t=e.nextSibling.nextSibling.defaultValue,n=proizvodi.find(e=>e.id==t);n.dostupnost&&(data.push(n),dodajULocalStorage(data))})})}function dodajULocalStorage(e){localStorage.setItem("zaKupovinu",JSON.stringify(e))}
+</div>`;
+  return txtVar;
+}
+function ispisiZvezdice(stars) {
+  let sadrzaj = "";
+  stars = Math.trunc(stars);
+  for (let i = 0; i < stars; i++) {
+    sadrzaj += "<i class='fa-regular fa-star'></i>";
+  }
+  return sadrzaj;
+}
+function ajaxCall(file, callback) {
+  $.ajax({
+    url: `assets/json/${file}.json`,
+    type: "get",
+    dataType: "json",
+    success(data) {
+      callback(data);
+    },
+    error(xhr) {
+      console.log(xhr);
+    },
+  });
+}
+function ispisNavMeni(data) {
+  let meni = "";
+  for (let obj of data) {
+    meni += `<li><a href="${obj.href}">${obj.naziv}</a></li>`;
+  }
+  $("#nav__menu").html(meni);
+}
+function dugmeZaDodavanjeFProizvodima() {
+  if (data == null) {
+    data = [];
+  }
+  document.querySelectorAll(`.add__to_cart`).forEach((btn) => {
+    btn.addEventListener(`click`, function () {
+      setTimeout(() => {
+        document.querySelector(`#success__cart`).style.display = `none`;
+      }, 900);
+      document.querySelector(`#success__cart`).style.display = `block`;
+
+      let id = btn.nextSibling.nextSibling.defaultValue;
+      let p = proizvodi.find((x) => x.id == id);
+      if (p.dostupnost) {
+        data.push(p);
+        dodajULocalStorage(data);
+      }
+    });
+  });
+}
+function dodajULocalStorage(data) {
+  localStorage.setItem("zaKupovinu", JSON.stringify(data));
+}
