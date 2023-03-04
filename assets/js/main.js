@@ -577,14 +577,15 @@ function dugmeZaDodavanjeFProizvodima() {
   }
   document.querySelectorAll(`.add__to_cart`).forEach((btn) => {
     btn.addEventListener(`click`, function () {
-      setTimeout(() => {
-        document.querySelector(`#success__cart`).style.display = `none`;
-      }, 900);
-      document.querySelector(`#success__cart`).style.display = `block`;
+      
 
       let id = btn.nextSibling.nextSibling.defaultValue;
       let p = proizvodi.find((x) => x.id == id);
       if (p.dostupnost) {
+        setTimeout(() => {
+          document.querySelector(`#success__cart`).style.display = `none`;
+        }, 900);
+        document.querySelector(`#success__cart`).style.display = `block`;
         data.push(p);
         dodajULocalStorage(data);
       }
