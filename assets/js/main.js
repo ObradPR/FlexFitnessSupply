@@ -67,7 +67,7 @@ if (url === "/FlexFitnessSupply/" || url === "/FlexFitnessSupply/index.html") {
 
     sliderContainer.innerHTML = sadrzaj;
   }
-} else if (url === "/FlexFitnessSupply/shop.html") {
+} else if (url === "/shop.html") {
   // SHOP DATA
   const sidebarBrendContainer = document.querySelector(`#sidebar__brands`);
   const sidebarCategoryContainer =
@@ -94,30 +94,31 @@ if (url === "/FlexFitnessSupply/" || url === "/FlexFitnessSupply/index.html") {
   searchTb.addEventListener(`keyup`, filterChange);
 
   // ADD PRODUCT TO LOCAL STORAGE EVENT
-  $(document).ready(function () {
-    let data;
-    data = JSON.parse(localStorage.getItem("zaKupovinu"));
-    if (data == null) {
-      data = [];
-    }
-    document.querySelectorAll(`.add__to_cart`).forEach((btn) => {
-      btn.addEventListener(`click`, function (e) {
-        e.preventDefault();
+  let timer2 = setInterval(() => {
+    if ($(`.add__to_cart`) != undefined) {
+      let data;
+      data = JSON.parse(localStorage.getItem("zaKupovinu"));
+      if (data == null) {
+        data = [];
+      }
+      document.querySelectorAll(`.add__to_cart`).forEach((btn) => {
+        btn.addEventListener(`click`, function () {
+          setTimeout(() => {
+            document.querySelector(`#success__cart`).style.display = `none`;
+          }, 900);
+          document.querySelector(`#success__cart`).style.display = `block`;
 
-        setTimeout(() => {
-          document.querySelector(`#success__cart`).style.display = `none`;
-        }, 900);
-        document.querySelector(`#success__cart`).style.display = `block`;
-
-        let id = btn.nextSibling.nextSibling.defaultValue;
-        let p = proizvodi.find((x) => x.id == id);
-        if (p.dostupnost) {
-          data.push(p);
-          dodajULocalStorage(data);
-        }
+          let id = btn.nextSibling.nextSibling.defaultValue;
+          let p = proizvodi.find((x) => x.id == id);
+          if (p.dostupnost) {
+            data.push(p);
+            dodajULocalStorage(data);
+          }
+        });
       });
-    });
-  });
+      clearInterval(timer2);
+    }
+  }, 100);
 
   // SHOP FUNCTIONS
   function ispisSidebarTeksta(data, classs) {
@@ -548,7 +549,7 @@ function ispisProizvodBloka(obj, txtVar) {
     <p>${obj.cena.aktuelnaCena} RSD</p>
     <del>${obj.cena.staraCena ? obj.cena.staraCena + " RSD" : ""}</del>
     </div>
-    <a href="#" class="add__to_cart"><i class="fa-solid fa-bag-shopping"></i></a>
+    <div class="add__to_cart"><i class="fa-solid fa-bag-shopping"></i></div>
     <input type="hidden" value="${obj.id}"/>
   </div>
 </div>`;
