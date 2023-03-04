@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+
+    <channel>
+        <title>FlexFitnessSupply</title>
+        <link>https://obradpr.github.io/FlexFitnessSupply</link>
+        <description>Rss za MlnBanku</description>
+        <item>
+            <title>15% POPUSTA</title>
+            <link>https://obradpr.github.io/FlexFitnessSupply/shop.html</link>
+            <description>Ne propusti 15% popusta na proizvode iz naše prodavnice.</description>
+        </item>
+    </channel>
+
+</rss>

@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "naziv": "Tegovi"
+  },
+  {
+    "id": 2,
+    "naziv": "Bučice"
+  },
+  {
+    "id": 3,
+    "naziv": "Šipke"
+  },
+  {
+    "id": 4,
+    "naziv": "Šejkeri"
+  },
+  {
+    "id": 5,
+    "naziv": "Trake"
+  },
+  {
+    "id": 6,
+    "naziv": "Mašine"
+  },
+  {
+    "id":7,
+    "naziv": "Ruska zvona"
+  }
+]

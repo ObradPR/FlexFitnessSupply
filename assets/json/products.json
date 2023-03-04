@@ -1,0 +1,574 @@
+[
+    {
+        "id":1,
+        "naziv":"Teg od 2KG",
+        "slika":{
+            "src":"assets/img/teg__2kg-1.png",
+            "alt":"Teg 2kg od livenog gvožđa"
+        },
+        "ocena":{
+            "stars":4,
+            "komentari":2
+        },
+        "cena":{
+            "staraCena":"2230",
+            "aktuelnaCena": "1895"
+        },
+        "kategorije":[1],
+        "brend":3,
+        "besplatnaDostava": false,
+        "najprodavaniji":false,
+        "dostupnost": true
+    },
+    {
+        "id":2,
+        "naziv":"Teg od 1.25KG",
+        "slika":{
+            "src":"assets/img/teg__1.25kg-1.png",
+            "alt":"Teg 1.25kg od livenog gvožđa"
+        },
+        "ocena":{
+            "stars":0,
+            "komentari":0
+        },
+        "cena":{
+            "aktuelnaCena": "1880"
+        },
+        "kategorije":[1],
+        "brend":3,
+        "besplatnaDostava": false,
+        "najprodavaniji":false,
+        "dostupnost": true
+    },
+    {
+        "id":3,
+        "naziv":"Dve Bučice(neopren) 2KG",
+        "slika":{
+            "src":"assets/img/bucice__neopren-1.png",
+            "alt":"Neopren dve bučice od 2kg"
+        },
+        "ocena":{
+            "stars":5,
+            "komentari":8
+        },
+        "cena":{
+            "staraCena":"3390",
+            "aktuelnaCena": "2880"
+        },
+        "kategorije":[2, 1],
+        "brend":4,
+        "besplatnaDostava": true,
+        "najprodavaniji":false,
+        "dostupnost": true
+    },
+    {
+        "id":4,
+        "naziv":"Elastične mini trake",
+        "slika":{
+            "src":"assets/img/elasticne__trake-1.png",
+            "alt":"Dve elastične mini trake"
+        },
+        "ocena":{
+            "stars":5,
+            "komentari":12
+        },
+        "cena":{
+            "aktuelnaCena": "1490"
+        },
+        "kategorije":[5],
+        "brend":4,
+        "besplatnaDostava": true,
+        "najprodavaniji":true,
+        "dostupnost": true
+    },
+    {
+        "id":5,
+        "naziv":"Bučica za tegove",
+        "slika":{
+            "src":"assets/img/bucica-1.png",
+            "alt":"Jedna bučica za tegove"
+        },
+        "ocena":{
+            "stars":3.5,
+            "komentari":0
+        },
+        "cena":{
+            "aktuelnaCena": "1880"
+        },
+        "kategorije":[2,3],
+        "brend":3,
+        "besplatnaDostava": true,
+        "najprodavaniji":false,
+        "dostupnost": true
+    },
+    {
+        "id":6,
+        "naziv":"Ruska zvona (4, 6, 8)KG",
+        "slika":{
+            "src":"assets/img/rusko__zvono_set-1.jpg",
+            "alt":"Ruska zvona set od 4kg, 6kg i 8kg"
+        },
+        "ocena":{
+            "stars":4,
+            "komentari":0
+        },
+        "cena":{
+            "staraCena": "5230",
+            "aktuelnaCena": "4445"
+        },
+        "kategorije":[7],
+        "brend":2,
+        "besplatnaDostava": true,
+        "najprodavaniji":true,
+        "dostupnost": true
+    },
+    {
+        "id":7,
+        "naziv":"Teg od 10KG (25LB)",
+        "slika":{
+            "src":"assets/img/teg__25lbs-1.png",
+            "alt":"Teg od 25lbs iliti 10kg, zeleni"
+        },
+        "ocena":{
+            "stars":5,
+            "komentari":2
+        },
+        "cena":{
+            "aktuelnaCena": "4220"
+        },
+        "kategorije":[1],
+        "brend":2,
+        "besplatnaDostava": false,
+        "najprodavaniji":false,
+        "dostupnost": true
+    },
+    {
+        "id":8,
+        "naziv":"Teg od 15KG (35LB)",
+        "slika":{
+            "src":"assets/img/teg__35lbs-1.png",
+            "alt":"Teg od 35lbs iliti 15kg, žuti"
+        },
+        "ocena":{
+            "stars":5,
+            "komentari":0
+        },
+        "cena":{
+            "aktuelnaCena": "5390"
+        },
+        "kategorije":[1],
+        "brend":2,
+        "besplatnaDostava": false,
+        "najprodavaniji":false,
+        "dostupnost": false
+    },
+    {
+        "id":9,
+        "naziv":"Teg od 20KG (45LB)",
+        "slika":{
+            "src":"assets/img/teg__45lbs-1.png",
+            "alt":"Teg od 45lbs iliti 20kg, plavi"
+        },
+        "ocena":{
+            "stars":5,
+            "komentari":5
+        },
+        "cena":{
+            "aktuelnaCena": "6890"
+        },
+        "kategorije":[1],
+        "brend":2,
+        "besplatnaDostava": false,
+        "najprodavaniji":false,
+        "dostupnost": true
+    },
+    {
+        "id":10,
+        "naziv":"iSport Pec Dec mašina",
+        "slika":{
+            "src":"assets/img/gym__chest-fly_machine.png",
+            "alt":"iSport Pec Dec mašina za grudno letenje"
+        },
+        "ocena":{
+            "stars":0,
+            "komentari":0
+        },
+        "cena":{
+            "staraCena": "26880",
+            "aktuelnaCena": "22850"
+        },
+        "kategorije":[6],
+        "brend":1,
+        "besplatnaDostava": true,
+        "najprodavaniji":false,
+        "dostupnost": true
+    },
+    {
+        "id":11,
+        "naziv":"iSport Smith mašina",
+        "slika":{
+            "src":"assets/img/smith__machine-1.png",
+            "alt":"iSport Smith mašina"
+        },
+        "ocena":{
+            "stars":1,
+            "komentari":1
+        },
+        "cena":{
+            "aktuelnaCena": "29220"
+        },
+        "kategorije":[6],
+        "brend":1,
+        "besplatnaDostava": true,
+        "najprodavaniji":false,
+        "dostupnost": true,
+        "novo":true
+    },
+    {
+        "id":12,
+        "naziv":"iSport Bench Press",
+        "slika":{
+            "src":"assets/img/bench__press-1.png",
+            "alt":"iSport Bench Press klupa"
+        },
+        "ocena":{
+            "stars":3,
+            "komentari":0
+        },
+        "cena":{
+            "aktuelnaCena": "19200"
+        },
+        "kategorije":[6],
+        "brend":1,
+        "besplatnaDostava": true,
+        "najprodavaniji":false,
+        "dostupnost": true
+    },
+    {
+        "id":13,
+        "naziv":"fitG Bench Press",
+        "slika":{
+            "src":"assets/img/bench__press-2.png",
+            "alt":"fitG Bench Press klupa"
+        },
+        "ocena":{
+            "stars":4.8,
+            "komentari":11
+        },
+        "cena":{
+            "aktuelnaCena": "24520"
+        },
+        "kategorije":[6],
+        "brend":2,
+        "besplatnaDostava": true,
+        "najprodavaniji":false,
+        "dostupnost": false
+    },
+    {
+        "id":14,
+        "naziv":"fitG Klupa",
+        "slika":{
+            "src":"assets/img/bench-1.png",
+            "alt":"fitG klupa"
+        },
+        "ocena":{
+            "stars":3.5,
+            "komentari":1
+        },
+        "cena":{
+            "aktuelnaCena": "12500"
+        },
+        "kategorije":[6],
+        "brend":2,
+        "besplatnaDostava": false,
+        "najprodavaniji":false,
+        "dostupnost": true
+    },
+    {
+        "id":15,
+        "naziv":"Set tegovi + 4 šipke",
+        "slika":{
+            "src":"assets/img/barbell__plate_set-1.png",
+            "alt":"IronPlates "
+        },
+        "ocena":{
+            "stars":3.5,
+            "komentari":1
+        },
+        "cena":{
+            "staraCena" : "44800",
+            "aktuelnaCena": "38080"
+        },
+        "kategorije":[1,3],
+        "brend":3,
+        "besplatnaDostava": true,
+        "najprodavaniji":false,
+        "dostupnost": true
+    },
+    {
+        "id":16,
+        "naziv":"iSport Traka za trčanje",
+        "slika":{
+            "src":"assets/img/treadmill-1.png",
+            "alt":"iSport Traka za trčanje "
+        },
+        "ocena":{
+            "stars":0,
+            "komentari":0
+        },
+        "cena":{
+            "aktuelnaCena": "32200"
+        },
+        "kategorije":[6],
+        "brend":1,
+        "besplatnaDostava": true,
+        "najprodavaniji":false,
+        "dostupnost": true,
+        "novo":true
+    },
+    {
+        "id":17,
+        "naziv":"fitG Traka za trčanje",
+        "slika":{
+            "src":"assets/img/treadmill-2.png",
+            "alt":"fitG Traka za trčanje "
+        },
+        "ocena":{
+            "stars":1,
+            "komentari":0
+        },
+        "cena":{
+            "staraCena": "52030",
+            "aktuelnaCena": "44225"
+        },
+        "kategorije":[6],
+        "brend":2,
+        "besplatnaDostava": true,
+        "najprodavaniji":false,
+        "dostupnost": true
+    },
+    {
+        "id":18,
+        "naziv":"fitG Leg Press mašina",
+        "slika":{
+            "src":"assets/img/leg__press_machine-1.png",
+            "alt":"fitG Leg Press mašina"
+        },
+        "ocena":{
+            "stars":3.3,
+            "komentari":12
+        },
+        "cena":{
+            "staraCena": "48000",
+            "aktuelnaCena": "40800"
+        },
+        "kategorije":[6],
+        "brend":2,
+        "besplatnaDostava": true,
+        "najprodavaniji":false,
+        "dostupnost": true
+    },
+    {
+        "id":19,
+        "naziv":"IronPlates Kabl Set + Lat + Presa + Noge",
+        "slika":{
+            "src":"assets/img/complete__cable_machine-set--1.png",
+            "alt":"IronPlates Kabl Set + Lat + Presa + Noge"
+        },
+        "ocena":{
+            "stars":5,
+            "komentari":33
+        },
+        "cena":{
+            "staraCena": "124990",
+            "aktuelnaCena": "106240"
+        },
+        "kategorije":[6],
+        "brend":3,
+        "besplatnaDostava": true,
+        "najprodavaniji":true,
+        "dostupnost": true
+    },
+    {
+        "id":20,
+        "naziv":"iSport Presa za grudi",
+        "slika":{
+            "src":"assets/img/chest__press_machine-1.png",
+            "alt":"iSport Presa za grudi"
+        },
+        "ocena":{
+            "stars":0,
+            "komentari":0
+        },
+        "cena":{
+            "aktuelnaCena": "15020"
+        },
+        "kategorije":[6],
+        "brend":1,
+        "besplatnaDostava": false,
+        "najprodavaniji":false,
+        "dostupnost": true,
+        "novo":true
+    },
+    {
+        "id":21,
+        "naziv":"IronPlates Set PowerRack + Klupa + Šipka",
+        "slika":{
+            "src":"assets/img/powerrack__bench_set-1.png",
+            "alt":"IronPlates Set PowerRack, Klupa and Šipka"
+        },
+        "ocena":{
+            "stars":4.1,
+            "komentari":6
+        },
+        "cena":{
+            "aktuelnaCena": "33230"
+        },
+        "kategorije":[6, 3],
+        "brend":3,
+        "besplatnaDostava": true,
+        "najprodavaniji":false,
+        "dostupnost": false
+    },
+    {
+        "id":22,
+        "naziv":"Olimpijska Deadlift Šipka 25kg",
+        "slika":{
+            "src":"assets/img/olympic__bar-1.png",
+            "alt":"Olimpijska Deadlift Šipka 25kg"
+        },
+        "ocena":{
+            "stars":4.5,
+            "komentari":0
+        },
+        "cena":{
+            "aktuelnaCena": "16200"
+        },
+        "kategorije":[3],
+        "brend":3,
+        "besplatnaDostava": false,
+        "najprodavaniji":false,
+        "dostupnost": true
+    },
+    {
+        "id":23,
+        "naziv":"Šipka za dizanje tegova 10kg",
+        "slika":{
+            "src":"assets/img/weightlifting__bar-1.png",
+            "alt":"Šipka za dizanje tegova 10kg"
+        },
+        "ocena":{
+            "stars":2,
+            "komentari":0
+        },
+        "cena":{
+            "aktuelnaCena": "7200"
+        },
+        "kategorije":[3],
+        "brend":3,
+        "besplatnaDostava": false,
+        "najprodavaniji":false,
+        "dostupnost": true
+    },
+    {
+        "id":24,
+        "naziv":"Set, 6 Olimpijskih Šipki",
+        "slika":{
+            "src":"assets/img/barbell__set-1.png",
+            "alt":"Šipka za dizanje tegova 10kg"
+        },
+        "ocena":{
+            "stars":4,
+            "komentari":2
+        },
+        "cena":{
+            "aktuelnaCena": "48020"
+        },
+        "kategorije":[3],
+        "brend":3,
+        "besplatnaDostava": true,
+        "najprodavaniji":false,
+        "dostupnost": true
+    },
+    {
+        "id":25,
+        "naziv":"SportNova Šejker Crno/Žuti 750ml",
+        "slika":{
+            "src":"assets/img/shaker-1.png",
+            "alt":"SportNova Šejker Crno/Žuti 750ml"
+        },
+        "ocena":{
+            "stars":5,
+            "komentari":0
+        },
+        "cena":{
+            "aktuelnaCena": "990"
+        },
+        "kategorije":[4],
+        "brend":4,
+        "besplatnaDostava": false,
+        "najprodavaniji":true,
+        "dostupnost": true
+    },
+    {
+        "id":26,
+        "naziv":"SportNova Šejker Crno/Plavi 750ml",
+        "slika":{
+            "src":"assets/img/shaker-2.png",
+            "alt":"SportNova Šejker Crno/Plavi 750ml"
+        },
+        "ocena":{
+            "stars":4.8,
+            "komentari":3
+        },
+        "cena":{
+            "aktuelnaCena": "990"
+        },
+        "kategorije":[4],
+        "brend":4,
+        "besplatnaDostava": false,
+        "najprodavaniji":false,
+        "dostupnost": true
+    },
+    {
+        "id":27,
+        "naziv":"ProteinSii Šejker 500ml",
+        "slika":{
+            "src":"assets/img/shaker-3.png",
+            "alt":"ProteinSii Šejker 500ml"
+        },
+        "ocena":{
+            "stars":3,
+            "komentari":0
+        },
+        "cena":{
+            "aktuelnaCena": "680"
+        },
+        "kategorije":[4],
+        "brend":5,
+        "besplatnaDostava": false,
+        "najprodavaniji":false,
+        "dostupnost": true
+    },
+    {
+        "id":28,
+        "naziv":"ProteinSii Šejker 750ml",
+        "slika":{
+            "src":"assets/img/shaker-4.png",
+            "alt":"ProteinSii Šejker 750ml"
+        },
+        "ocena":{
+            "stars":3.3,
+            "komentari":1
+        },
+        "cena":{
+            "aktuelnaCena": "820"
+        },
+        "kategorije":[4],
+        "brend":5,
+        "besplatnaDostava": false,
+        "najprodavaniji":false,
+        "dostupnost": false
+    }
+
+]

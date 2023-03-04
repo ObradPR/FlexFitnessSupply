@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "naziv": "iSport"
+  },
+  {
+    "id": 2,
+    "naziv": "fitG"
+  },
+  {
+    "id": 3,
+    "naziv": "IronPlates"
+  },
+  {
+    "id": 4,
+    "naziv": "SportNova"
+  },
+  {
+    "id": 5,
+    "naziv": "ProteinSii"
+  },
+  {
+    "id":8,
+    "naziv":"MuscleInsanity"
+  }
+]

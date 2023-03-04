@@ -1,0 +1,18 @@
+[
+  {
+    "naziv": "Početna",
+    "href": "index.html"
+  },
+  {
+    "naziv": "Prodavnica",
+    "href": "shop.html"
+  },
+  {
+    "naziv": "Kontaktirajte nas",
+    "href": "contact.html"
+  },
+  {
+    "naziv": "O autoru",
+    "href": "author.html"
+  }
+]

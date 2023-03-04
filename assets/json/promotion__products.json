@@ -1,0 +1,23 @@
+[
+    {
+        "id":1,
+        "slika":{
+            "src":"assets/img/promotion--1.jpg",
+            "alt":"Leg press i set šipki promocija"
+        }
+    },
+    {
+        "id":2,
+        "slika":{
+            "src":"assets/img/promotion--2.jpg",
+            "alt":"Promocija ruskih zvona od 4, 6 i 8 kilograma"
+        }
+    },
+    {
+        "id":3,
+        "slika":{
+            "src":"assets/img/promotion--3.jpg",
+            "alt":"Promocija najprodavanije mašine 3u1 sve što vam treba"
+        }
+    }
+]
