@@ -18,7 +18,7 @@ collapseMenuButton.addEventListener(`click`, function () {
 
 // PAGE
 
-if (url === "/" || url === "/index.html") {
+if (url === "/FlexFitnessSupply/" || url === "/FlexFitnessSupply/index.html") {
   //  INDEX DATA
   const sliderContainer = document.querySelector(
     `#slider__promotion_container`
@@ -65,7 +65,7 @@ if (url === "/" || url === "/index.html") {
 
     sliderContainer.innerHTML = sadrzaj;
   }
-} else if (url === "/shop.html") {
+} else if (url === "/FlexFitnessSupply/shop.html") {
   // SHOP DATA
   const sidebarBrendContainer = document.querySelector(`#sidebar__brands`);
   const sidebarCategoryContainer =
@@ -260,7 +260,7 @@ if (url === "/" || url === "/index.html") {
   function filterChange() {
     ajaxCall("products", ispisProizvoda);
   }
-} else if (url === "/contact.html") {
+} else if (url === "/FlexFitnessSupply/contact.html") {
   // CONTACT DATA
   const poruka = document.querySelector(`#polje__tekst`);
   const ddlOpcije = document.querySelector(`#ddl__opcije`);
@@ -352,7 +352,7 @@ if (url === "/" || url === "/index.html") {
       brKaraktera.innerHTML = 0;
     }
   }
-} else if (url === "/cart.html") {
+} else if (url === "/FlexFitnessSupply/cart.html") {
   // CART DATA
   let proizvodiUKorpi;
   const cartProductsContainer = document.querySelector(`#cart__products`);
