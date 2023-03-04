@@ -67,7 +67,7 @@ if (url === "/FlexFitnessSupply/" || url === "/FlexFitnessSupply/index.html") {
 
     sliderContainer.innerHTML = sadrzaj;
   }
-} else if (url === "/shop.html") {
+} else if (url === "/FlexFitnessSupply/shop.html") {
   // SHOP DATA
   const sidebarBrendContainer = document.querySelector(`#sidebar__brands`);
   const sidebarCategoryContainer =
