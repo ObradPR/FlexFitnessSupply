@@ -7,6 +7,7 @@ const collapseMenuButton = document.querySelector(`#toggle`);
 const navMeni = document.querySelector(`#nav__menu`);
 const cartBtn = document.querySelector(`#cart`);
 const logo = document.querySelector(`#logo`);
+let data = JSON.parse(localStorage.getItem("zaKupovinu"));
 
 // GLOBAL AJAX CALLS
 ajaxCall("navMeni", ispisNavMeni);
@@ -27,7 +28,7 @@ if (url === "/FlexFitnessSupply/" || url === "/FlexFitnessSupply/index.html") {
     `#best__products_container`
   );
   let timer = setInterval(() => {
-    if ($(`.slide__promotion`) != undefined) {
+    if ($(`.slide__promotion`) != undefined && $(`.add__to_cart`) != undefined) {
       $(`#slider__promotion`).skdslider({
         slideSelector: `.slide__promotion`,
         delay: 4000,
@@ -37,10 +38,10 @@ if (url === "/FlexFitnessSupply/" || url === "/FlexFitnessSupply/index.html") {
         autoSlide: true,
         animationType: `sliding`,
       });
+      dugmeZaDodavanjeFProizvodima();
       clearInterval(timer);
     }
   }, 100);
-  // INDEX PROMOTION SLDIER
 
   // INDEX AJAX CALLS
   ajaxCall("products", ispisNajprodavanijihProizvoda);
@@ -49,6 +50,7 @@ if (url === "/FlexFitnessSupply/" || url === "/FlexFitnessSupply/index.html") {
   // INDEX FUNCTIONS
   function ispisNajprodavanijihProizvoda(data) {
     let sadrzaj = "";
+    proizvodi = data;
 
     for (let obj of data) {
       if (obj.najprodavaniji) {
@@ -94,32 +96,16 @@ if (url === "/FlexFitnessSupply/" || url === "/FlexFitnessSupply/index.html") {
   searchTb.addEventListener(`keyup`, filterChange);
 
   // ADD PRODUCT TO LOCAL STORAGE EVENT
-  let data = JSON.parse(localStorage.getItem("zaKupovinu"));
+  
   let timer2 = setInterval(() => {
     if ($(`.add__to_cart`) != undefined) {
-      if (data == null) {
-        data = [];
-      }
-      document.querySelectorAll(`.add__to_cart`).forEach((btn) => {
-        btn.addEventListener(`click`, function () {
-          setTimeout(() => {
-            document.querySelector(`#success__cart`).style.display = `none`;
-          }, 900);
-          document.querySelector(`#success__cart`).style.display = `block`;
-
-          let id = btn.nextSibling.nextSibling.defaultValue;
-          let p = proizvodi.find((x) => x.id == id);
-          if (p.dostupnost) {
-            data.push(p);
-            dodajULocalStorage(data);
-          }
-        });
-      });
+      dugmeZaDodavanjeFProizvodima();
       clearInterval(timer2);
     }
   }, 100);
 
   // SHOP FUNCTIONS
+  
   function ispisSidebarTeksta(data, classs) {
     let sadrzaj = "";
     let value = 1;
@@ -581,6 +567,26 @@ function ispisNavMeni(data) {
     meni += `<li><a href="${obj.href}">${obj.naziv}</a></li>`;
   }
   $("#nav__menu").html(meni);
+}
+function dugmeZaDodavanjeFProizvodima() {
+  if (data == null) {
+    data = [];
+  }
+  document.querySelectorAll(`.add__to_cart`).forEach((btn) => {
+    btn.addEventListener(`click`, function () {
+      setTimeout(() => {
+        document.querySelector(`#success__cart`).style.display = `none`;
+      }, 900);
+      document.querySelector(`#success__cart`).style.display = `block`;
+
+      let id = btn.nextSibling.nextSibling.defaultValue;
+      let p = proizvodi.find((x) => x.id == id);
+      if (p.dostupnost) {
+        data.push(p);
+        dodajULocalStorage(data);
+      }
+    });
+  });
 }
 function dodajULocalStorage(data) {
   localStorage.setItem("zaKupovinu", JSON.stringify(data));
