@@ -26,21 +26,21 @@ if (url === "/FlexFitnessSupply/" || url === "/FlexFitnessSupply/index.html") {
   const bestProductsContainer = document.querySelector(
     `#best__products_container`
   );
-
-  setTimeout(() => {
-    
-    $(`#slider__promotion`).skdslider({
-      slideSelector: `.slide__promotion`,
-      delay: 4000,
-      animationSpeed: 1000,
-      showNextPrev: false,
-      showPlayButton: false,
-      autoSlide: true,
-      animationType: `sliding`,
-    });
-  }, 2000);
-    // INDEX PROMOTION SLDIER
-
+  let timer = setInterval(() => {
+    if ($(`.slide__promotion`) != undefined) {
+      $(`#slider__promotion`).skdslider({
+        slideSelector: `.slide__promotion`,
+        delay: 4000,
+        animationSpeed: 1000,
+        showNextPrev: false,
+        showPlayButton: false,
+        autoSlide: true,
+        animationType: `sliding`,
+      });
+      clearInterval(timer);
+    }
+  }, 100);
+  // INDEX PROMOTION SLDIER
 
   // INDEX AJAX CALLS
   ajaxCall("products", ispisNajprodavanijihProizvoda);
