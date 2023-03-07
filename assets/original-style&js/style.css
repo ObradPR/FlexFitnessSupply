@@ -373,7 +373,7 @@ footer {
   font-size: 0.9rem;
 }
 
-.product__block a {
+.product__block .add__to_cart {
   border: 1px solid #fc7c78;
   border-radius: 50%;
   padding: 0.3rem 0.5rem;
@@ -393,7 +393,7 @@ footer {
   width: 1.8rem;
 }
 
-.product__block a:hover {
+.product__block .add__to_cart:hover {
   background-color: #fc7c78;
   color: #ffffff;
 }
